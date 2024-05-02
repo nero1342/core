@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "core"
+version = "0.1.0"
+description = ""
+authors = ["E-Ro Nguyen"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fvcore = "^0.1.5.post20221221"
+accelerate = "^0.29.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,21 @@
+defaults:
+  # Config
+  - hydra: default 
+  - extras: default
+  - paths: default
+  
+  # Model
+  - solver: default
+  - writer: default
+  - model: default
+  - test: default
+
+  #
+  - _self_
+
+project: lavt-refcoco
+name: vlformer-bs8x8-150ep
+seed: 19052801
+hydra:
+  run:
+    dir: outputs/${project}/${name}/${now:%Y-%m-%d_%H-%M-%S}

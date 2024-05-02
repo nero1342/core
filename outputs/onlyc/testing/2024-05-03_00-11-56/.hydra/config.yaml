@@ -1,0 +1,37 @@
+extras:
+  ignore_warnings: false
+  enforce_tags: false
+  print_config: true
+paths:
+  root_dir: ${oc.env:PROJECT_ROOT}
+  data_dir: ${paths.root_dir}/data
+  log_dir: ${paths.root_dir}/logs
+  output_dir: ${hydra:runtime.output_dir}
+  work_dir: ${hydra:runtime.cwd}
+solver:
+  optimizer: AdamW
+  lr_scheduler: step
+  scheduler_gamma: 0.1
+  base_lr: 0.0001
+  weight_decay: 1.0e-06
+  backbone_lr_multiplier: 0.1
+  steps:
+  - 100
+  - 200
+  max_iter: 289
+  checkpoint_period: 1000
+  use_amp: false
+writer:
+  period: 20
+  list:
+    CommonMetricPrinter:
+      max_iter: ${solver.max_iter}
+      window_size: 20
+model:
+  model: test
+test:
+  eval_period: 1000
+project: onlyc
+name: testing
+seed: 19052801
+eval_only: true

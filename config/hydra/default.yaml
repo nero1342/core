@@ -1,0 +1,22 @@
+job_logging:
+  formatters:
+    rich:
+      format: '[%(asctime)s]  [bold green]{%(name)s}[/] - %(message)s'
+    simple:
+      format: '%(levelname)s [%(asctime)s]  {%(name)s} - %(message)s'
+  handlers:
+    richconsole:
+      class: rich.logging.RichHandler
+      formatter: rich
+      rich_tracebacks: true
+      log_time_format: ""
+      show_path: true
+      markup: True
+    file:
+      class: logging.FileHandler
+      formatter: simple
+      # absolute file path
+      filename: ${hydra.runtime.output_dir}/${hydra.job.name}.log
+  root:
+    level: INFO
+    handlers: [richconsole, file]
